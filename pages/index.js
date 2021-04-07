@@ -1,12 +1,31 @@
 import Head from 'next/head';
+import styled from 'styled-components';
+import Directory from '../components/Directory';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>
+    <S.HomePageContainer>
       <Head>
-        <title>Create Next App</title>
+        <title>CRWN Clothing</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-    </div>
+      <Directory />
+    </S.HomePageContainer>
   );
-}
+};
+
+export default Home;
+
+// Styled Components
+const S = {};
+
+S.HomePageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+
+  @media screen and (min-width: 800px) {
+    padding: 20px 80px;
+  }
+`;
