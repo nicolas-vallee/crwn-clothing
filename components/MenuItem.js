@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 const MenuItem = ({ title, imageUrl, size }) => {
-  const [hover, setHover] = useState(false);
-
   return (
-    <S.MenuItemContainer
-      size={size}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <S.MenuItemContainer size={size}>
       <S.BackgroundImage
-        hover={hover}
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
+        className='menu-item__background-image'
+        imageUrl={imageUrl}
       />
-      <S.Content hover={hover}>
+      <S.Content className='menu-item__content'>
         <S.Title>{title}</S.Title>
         <S.Subtitle>Shop now</S.Subtitle>
       </S.Content>
@@ -47,6 +39,14 @@ S.MenuItemContainer = styled.div`
 
   &:hover {
     cursor: pointer;
+
+    & .menu-item__background-image {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+    & .menu-item__content {
+      opacity: 0.9;
+    }
   }
 
   &:first-child {
@@ -68,7 +68,7 @@ S.BackgroundImage = styled.div`
   height: 100%;
   background-size: cover;
   background-position: center;
-  ${({ hover }) => hover && imageHoverStyles}
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
 S.Content = styled.div`
@@ -80,7 +80,7 @@ S.Content = styled.div`
   justify-content: center;
   border: 1px solid black;
   background-color: white;
-  opacity: ${({ hover }) => (hover ? 0.9 : 0.7)};
+  opacity: 0.7;
   position: absolute;
 `;
 

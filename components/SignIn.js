@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import FormInput from './FormInput';
 
 const SignIn = () => {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+  });
 
   const handleChange = (event) => {
     const { value, name } = event.target;
-    setCredentials({ [name]: value });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = (event) => {
@@ -15,33 +19,29 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h2>I already have an account</h2>
+    <S.SignInContainer>
+      <S.SignInTitle>I already have an account</S.SignInTitle>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            name='email'
-            type='email'
-            value={credentials.email}
-            required
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            name='password'
-            type='password'
-            value={credentials.password}
-            required
-            onChange={handleChange}
-          />
-        </label>
+        <FormInput
+          name='email'
+          type='email'
+          value={credentials.email}
+          required
+          handleChange={handleChange}
+          label='Email'
+        />
+        <FormInput
+          name='password'
+          type='password'
+          value={credentials.password}
+          required
+          handleChange={handleChange}
+          label='Password'
+        />
         <input type='submit' value='Sign In' />
       </form>
-    </div>
+    </S.SignInContainer>
   );
 };
 
@@ -49,3 +49,13 @@ export default SignIn;
 
 // Styled Components
 const S = {};
+
+S.SignInContainer = styled.div`
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+`;
+
+S.SignInTitle = styled.h2`
+  margin: 10px 0;
+`;
