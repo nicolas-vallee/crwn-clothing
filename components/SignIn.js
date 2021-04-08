@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import FormInput from './FormInput';
+import CustomButton from '../components/CustomButton';
 
 const SignIn = () => {
   const [credentials, setCredentials] = useState({
@@ -39,7 +40,7 @@ const SignIn = () => {
           handleChange={handleChange}
           label='Password'
         />
-        <input type='submit' value='Sign In' />
+        <CustomButton type='submit'>Sign In</CustomButton>
       </form>
     </S.SignInContainer>
   );
