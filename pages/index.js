@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import Directory from '../components/Directory';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <S.HomePageContainer>
       <Head>
@@ -14,7 +14,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
 
 // Styled Components
 const S = {};

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SHOP_DATA from '../data/shopData';
 import CollectionPreview from '../components/CollectionPreview';
 
-const shop = () => {
+const ShopPage = () => {
   const [collections, setCollections] = useState(SHOP_DATA);
 
   return (
@@ -16,4 +16,4 @@ const shop = () => {
   );
 };
 
-export default shop;
+export default ShopPage;
