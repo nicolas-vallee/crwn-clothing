@@ -1,14 +1,28 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const CustomButton = ({ children, ...otherProps }) => {
-  return <S.ButtonContainer {...otherProps}>{children}</S.ButtonContainer>;
+const CustomButton = ({ children, isGoogleSignIn, ...otherProps }) => {
+  return (
+    <S.ButtonContainer isGoogleSignIn={isGoogleSignIn} {...otherProps}>
+      {children}
+    </S.ButtonContainer>
+  );
 };
 
 export default CustomButton;
 
 // Styled Components
 const S = {};
+
+const googleSignInStyles = css`
+  background-color: #4285f4;
+  color: white;
+
+  &:hover {
+    background-color: #357ae8;
+    border: none;
+  }
+`;
 
 S.ButtonContainer = styled.button`
   min-width: 165px;
@@ -31,4 +45,6 @@ S.ButtonContainer = styled.button`
     color: black;
     border: 1px solid black;
   }
+
+  ${({ isGoogleSignIn }) => isGoogleSignIn && googleSignInStyles}
 `;

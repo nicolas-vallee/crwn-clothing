@@ -41,10 +41,12 @@ const SignIn = () => {
           handleChange={handleChange}
           label='Password'
         />
-        <CustomButton type='submit'>Sign In</CustomButton>
-        <CustomButton onClick={signInWithGoogle}>
-          Sign in with Google
-        </CustomButton>
+        <S.ButtonsContainer>
+          <CustomButton type='submit'>Sign In</CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            Sign in with Google
+          </CustomButton>
+        </S.ButtonsContainer>
       </form>
     </S.SignInContainer>
   );
@@ -63,4 +65,9 @@ S.SignInContainer = styled.div`
 
 S.SignInTitle = styled.h2`
   margin: 10px 0;
+`;
+
+S.ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

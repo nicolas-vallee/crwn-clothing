@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Logo from '../assets/crown.svg';
+import { auth } from '../firebase/firebase.utils';
 
-const Header = () => {
+const Header = ({ currentUser }) => {
   return (
     <S.HeaderContainer>
       <S.LogoContainer>
@@ -23,6 +24,15 @@ const Header = () => {
           <Link href='/contact'>
             <a>Contact</a>
           </Link>
+        </S.NavItem>
+        <S.NavItem>
+          {currentUser ? (
+            <div onClick={() => auth.signOut()}>Sign out</div>
+          ) : (
+            <Link href='/signin'>
+              <a>Sign in</a>
+            </Link>
+          )}
         </S.NavItem>
       </S.NavContainer>
     </S.HeaderContainer>
@@ -62,4 +72,8 @@ S.NavContainer = styled.nav`
 S.NavItem = styled.div`
   padding: 10px 15px;
   text-transform: uppercase;
+
+  & div:hover {
+    cursor: pointer;
+  }
 `;
