@@ -21,8 +21,8 @@ const SignIn = () => {
   };
 
   return (
-    <S.SignInContainer>
-      <S.SignInTitle>I already have an account</S.SignInTitle>
+    <S.AuthFormContainer>
+      <S.AuthFormTitle>I already have an account</S.AuthFormTitle>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -41,33 +41,35 @@ const SignIn = () => {
           handleChange={handleChange}
           label='Password'
         />
-        <S.ButtonsContainer>
+        <S.AuthFormButtonsContainer>
           <CustomButton type='submit'>Sign In</CustomButton>
           <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
             Sign in with Google
           </CustomButton>
-        </S.ButtonsContainer>
+        </S.AuthFormButtonsContainer>
       </form>
-    </S.SignInContainer>
+    </S.AuthFormContainer>
   );
 };
 
 export default SignIn;
 
 // Styled Components
-const S = {};
+export const S = {};
 
-S.SignInContainer = styled.div`
-  width: 380px;
+S.AuthFormContainer = styled.div`
+  width: 100%;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 `;
 
-S.SignInTitle = styled.h2`
+S.AuthFormTitle = styled.h2`
   margin: 10px 0;
 `;
 
-S.ButtonsContainer = styled.div`
+S.AuthFormButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
