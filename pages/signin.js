@@ -1,9 +1,23 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 
 const SigninPage = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const router = useRouter();
+
+  // If a user is authenticated, redirect to home page
+  if (currentUser) {
+    // We make sure we are in the browser
+    if (typeof window !== 'undefined') {
+      router.push('/');
+      return null;
+    }
+  }
+
   return (
     <S.SignInPageContainer>
       <SignIn />

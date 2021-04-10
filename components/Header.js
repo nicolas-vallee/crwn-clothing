@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Logo from '../assets/crown.svg';
 import { auth } from '../firebase/firebase.utils';
