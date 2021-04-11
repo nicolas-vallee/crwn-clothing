@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Logo from '../assets/crown.svg';
 import { auth } from '../firebase/firebase.utils';
 import CartIcon from './CartIcon';
+import CartDropdown from './CartDropdown';
 
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -40,6 +41,7 @@ const Header = () => {
         </S.NavItem>
         <CartIcon />
       </S.NavContainer>
+      <CartDropdown />
     </S.HeaderContainer>
   );
 };

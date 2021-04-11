@@ -5,8 +5,8 @@ import { ReactComponent as ShoppingBag } from '../assets/shopping-bag-2.svg';
 const CartIcon = () => {
   return (
     <S.IconContainer>
-      <ShoppingBag />
-      <S.Counter>0</S.Counter>
+      <S.Icon />
+      <S.Counter>85</S.Counter>
     </S.IconContainer>
   );
 };
