@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CustomButton from './CustomButton';
+import { addItemToCart } from '../redux/cartSlice';
 
-const CollectionItem = ({ id, name, price, imageUrl }) => {
+const CollectionItem = ({ item }) => {
+  const { name, price, imageUrl } = item;
+
+  const dispatch = useDispatch();
+  const handleClick = () => dispatch(addItemToCart(item));
+
   return (
     <S.Container>
       <S.BackgroundImage
@@ -14,7 +21,9 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
         <S.Name>{name}</S.Name>
         <S.Price>${price}</S.Price>
       </S.Footer>
-      <S.AddToCartButton isInverted>Add to cart</S.AddToCartButton>
+      <S.AddToCartButton isInverted onClick={handleClick}>
+        Add to cart
+      </S.AddToCartButton>
     </S.Container>
   );
 };
