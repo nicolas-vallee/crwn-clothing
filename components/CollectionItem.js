@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CustomButton from './CustomButton';
 
 const CollectionItem = ({ id, name, price, imageUrl }) => {
   return (
@@ -13,6 +14,7 @@ const CollectionItem = ({ id, name, price, imageUrl }) => {
         <S.Name>{name}</S.Name>
         <S.Price>${price}</S.Price>
       </S.Footer>
+      <S.AddToCartButton isInverted>Add to cart</S.AddToCartButton>
     </S.Container>
   );
 };
@@ -28,6 +30,22 @@ S.Container = styled.div`
   flex-direction: column;
   height: 350px;
   align-items: center;
+  position: relative;
+
+  & button {
+    display: none;
+  }
+
+  &:hover {
+    & div:first-child {
+      opacity: 0.8;
+    }
+
+    & button {
+      display: flex;
+      opacity: 0.85;
+    }
+  }
 `;
 
 S.BackgroundImage = styled.div`
@@ -54,4 +72,11 @@ S.Name = styled.span`
 S.Price = styled.span`
   text-align: right;
   width: 20%;
+`;
+
+S.AddToCartButton = styled(CustomButton)`
+  width: 80%;
+  opacity: 0.7;
+  position: absolute;
+  top: 255px;
 `;
