@@ -9,6 +9,7 @@ import CartDropdown from './CartDropdown';
 
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
+  const cartHidden = useSelector((state) => state.cart.cartHidden);
 
   return (
     <S.HeaderContainer>
@@ -41,7 +42,7 @@ const Header = () => {
         </S.NavItem>
         <CartIcon />
       </S.NavContainer>
-      <CartDropdown />
+      {!cartHidden && <CartDropdown />}
     </S.HeaderContainer>
   );
 };
