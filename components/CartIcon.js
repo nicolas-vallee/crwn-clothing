@@ -1,18 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { ReactComponent as ShoppingBag } from '../assets/shopping-bag-2.svg';
 import { toggleCartHidden } from '../redux/cartSlice';
 
 const CartIcon = () => {
   const dispatch = useDispatch();
+  const itemCount = useSelector((state) =>
+    state.cart.cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  );
 
   const handleClick = () => dispatch(toggleCartHidden());
 
   return (
     <S.IconContainer onClick={handleClick}>
       <S.Icon />
-      <S.Counter>85</S.Counter>
+      <S.Counter>{itemCount}</S.Counter>
     </S.IconContainer>
   );
 };
