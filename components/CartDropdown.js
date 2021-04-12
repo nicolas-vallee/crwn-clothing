@@ -1,21 +1,32 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Link from 'next/link';
 import styled from 'styled-components';
 import CartItem from './CartItem';
 import CustomButton from './CustomButton';
+import { toggleCartHidden } from '../redux/cartSlice';
 
 const CartDropdown = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const handleClick = () => dispatch(toggleCartHidden());
 
   return (
     <S.CartDropdownContainer>
       <S.CartItems>
-        {!cartItems.length && <span>Your cart is empty.</span>}
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <span className='empty-cart-message'>Your cart is empty.</span>
+        )}
       </S.CartItems>
-      <S.CheckoutButton>Go to checkout</S.CheckoutButton>
+      <Link href='/checkout' passHref>
+        <S.CheckoutButton onClick={handleClick}>
+          Go to checkout
+        </S.CheckoutButton>
+      </Link>
     </S.CartDropdownContainer>
   );
 };
@@ -44,6 +55,11 @@ S.CartItems = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  & .empty-cart-message {
+    font-size: 18px;
+    margin: 50px auto;
+  }
 `;
 
 S.CheckoutButton = styled(CustomButton)`
