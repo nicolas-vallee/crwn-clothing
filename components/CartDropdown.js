@@ -1,12 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import CartItem from './CartItem';
 import CustomButton from './CustomButton';
 
 const CartDropdown = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   return (
     <S.CartDropdownContainer>
       <S.CartItems>
-        <span>Your cart is empty.</span>
+        {!cartItems.length && <span>Your cart is empty.</span>}
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.id} item={cartItem} />
+        ))}
       </S.CartItems>
       <S.CheckoutButton>Go to checkout</S.CheckoutButton>
     </S.CartDropdownContainer>

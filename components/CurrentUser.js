@@ -14,10 +14,8 @@ const CurrentUser = () => {
         userRef.onSnapshot((snapShot) => {
           dispatch(
             setCurrentUser({
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data(),
-              },
+              id: snapShot.id,
+              ...snapShot.data(),
             })
           );
         });
