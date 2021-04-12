@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { clearItemFromCart, addItem, removeItem } from '../redux/cartSlice';
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
+  const dispatch = useDispatch();
 
   return (
     <S.CheckoutItemContainer>
@@ -10,9 +13,22 @@ const CheckoutItem = ({ cartItem }) => {
         <img src={imageUrl} alt={name} />
       </S.ImageContainer>
       <span className='name'>{name}</span>
-      <span className='quantity'>{quantity}</span>
+      <span className='quantity'>
+        <div className='arrow' onClick={() => dispatch(removeItem(cartItem))}>
+          &#10094;
+        </div>
+        <span className='value'>{quantity}</span>
+        <div className='arrow' onClick={() => dispatch(addItem(cartItem))}>
+          &#10095;
+        </div>
+      </span>
       <span className='price'>${price}</span>
-      <div className='remove-button'>&#10005;</div>
+      <div
+        className='remove-button'
+        onClick={() => dispatch(clearItemFromCart(cartItem))}
+      >
+        &#10005;
+      </div>
     </S.CheckoutItemContainer>
   );
 };
@@ -38,7 +54,15 @@ S.CheckoutItemContainer = styled.div`
   }
 
   .quantity {
-    padding-left: 20px;
+    display: flex;
+
+    .arrow {
+      cursor: pointer;
+    }
+
+    .value {
+      margin: 0 10px;
+    }
   }
 
   .remove-button {

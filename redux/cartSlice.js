@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { cartHidden: true, cartItems: [] };
 
-const groupItemsInCart = (cartItems, cartItemToAdd) => {
+const addItemToCart = (cartItems, cartItemToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
@@ -18,6 +18,22 @@ const groupItemsInCart = (cartItems, cartItemToAdd) => {
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
+const removeItemFromCart = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === cartItemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
+  }
+
+  return cartItems.map((cartItem) =>
+    cartItem.id === cartItemToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -25,11 +41,24 @@ const cartSlice = createSlice({
     toggleCartHidden(state) {
       state.cartHidden = !state.cartHidden;
     },
-    addItemToCart(state, action) {
-      state.cartItems = groupItemsInCart(state.cartItems, action.payload);
+    addItem(state, action) {
+      state.cartItems = addItemToCart(state.cartItems, action.payload);
+    },
+    removeItem(state, action) {
+      state.cartItems = removeItemFromCart(state.cartItems, action.payload);
+    },
+    clearItemFromCart(state, action) {
+      state.cartItems = state.cartItems.filter(
+        (cartItem) => cartItem.id !== action.payload.id
+      );
     },
   },
 });
 
-export const { toggleCartHidden, addItemToCart } = cartSlice.actions;
+export const {
+  toggleCartHidden,
+  addItem,
+  removeItem,
+  clearItemFromCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

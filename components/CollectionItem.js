@@ -2,13 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import CustomButton from './CustomButton';
-import { addItemToCart } from '../redux/cartSlice';
+import { addItem } from '../redux/cartSlice';
 
 const CollectionItem = ({ item }) => {
   const { name, price, imageUrl } = item;
 
   const dispatch = useDispatch();
-  const handleClick = () => dispatch(addItemToCart(item));
+  const handleClick = () => dispatch(addItem(item));
 
   return (
     <S.Container>
