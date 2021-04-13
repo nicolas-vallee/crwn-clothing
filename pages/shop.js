@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
-import styled from 'styled-components';
-import SHOP_DATA from '../data/shopData';
+import React from 'react';
+import { useSelector } from 'react-redux';
+// import Head from 'next/head';
+// import styled from 'styled-components';
 import CollectionPreview from '../components/CollectionPreview';
 
 const ShopPage = () => {
-  const [collections, setCollections] = useState(SHOP_DATA);
+  const collections = useSelector((state) => state.shop);
 
   return (
     <div>

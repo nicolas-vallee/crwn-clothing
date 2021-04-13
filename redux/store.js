@@ -6,8 +6,15 @@ import logger from 'redux-logger';
 
 import userReducer from './userSlice';
 import cartReducer from './cartSlice';
+import directoryReducer from './directorySlice';
+import shopReducer from './shopSlice';
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
+const rootReducer = combineReducers({
+  user: userReducer,
+  cart: cartReducer,
+  directory: directoryReducer,
+  shop: shopReducer,
+});
 
 const persistConfig = {
   key: 'root',
