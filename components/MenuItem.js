@@ -1,18 +1,21 @@
 import React from 'react';
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
   return (
-    <S.MenuItemContainer size={size}>
-      <S.BackgroundImage
-        className='menu-item__background-image'
-        imageUrl={imageUrl}
-      />
-      <S.Content className='menu-item__content'>
-        <S.Title>{title}</S.Title>
-        <S.Subtitle>Shop now</S.Subtitle>
-      </S.Content>
-    </S.MenuItemContainer>
+    <Link href={linkUrl} passHref>
+      <S.MenuItemContainer size={size}>
+        <S.BackgroundImage
+          className='menu-item__background-image'
+          imageUrl={imageUrl}
+        />
+        <S.Content className='menu-item__content'>
+          <S.Title>{title}</S.Title>
+          <S.Subtitle>Shop now</S.Subtitle>
+        </S.Content>
+      </S.MenuItemContainer>
+    </Link>
   );
 };
 
@@ -26,7 +29,7 @@ const imageHoverStyles = css`
   transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 `;
 
-S.MenuItemContainer = styled.div`
+S.MenuItemContainer = styled.a`
   min-width: 50%;
   height: 180px;
   flex: 1 1 auto;
