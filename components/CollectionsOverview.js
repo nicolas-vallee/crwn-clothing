@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import CollectionPreview from './CollectionPreview';
 
 const CollectionsOverview = () => {
-  const collections = useSelector((state) => state.shop);
+  const shop = useSelector((state) => state.shop);
+  const collections = Object.keys(shop).map((key) => shop[key]);
 
   return (
     <S.CollectionsOverviewContainer>
