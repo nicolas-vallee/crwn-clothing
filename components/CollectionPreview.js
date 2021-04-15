@@ -1,11 +1,16 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import CollectionItem from './CollectionItem';
 
-const CollectionPreview = ({ title, items }) => {
+const CollectionPreview = ({ title, items, routeName }) => {
   return (
     <S.Container>
-      <S.Title>{title}</S.Title>
+      <S.Title>
+        <Link href={`/shop/${routeName}`}>
+          <a>{title}</a>
+        </Link>
+      </S.Title>
       <S.Preview>
         {items
           .filter((item, idx) => idx < 4)

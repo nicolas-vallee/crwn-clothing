@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import CheckoutItem from '../components/CheckoutItem';
@@ -13,6 +14,9 @@ const CheckoutPage = () => {
 
   return (
     <S.CheckoutPageContainer>
+      <Head>
+        <title>CRWN Clothing | Checkout</title>
+      </Head>
       <S.CheckoutHeader>
         <S.HeaderBlock>
           <span>Product</span>

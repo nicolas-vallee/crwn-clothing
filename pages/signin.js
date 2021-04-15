@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -20,6 +21,9 @@ const SigninPage = () => {
 
   return (
     <S.SignInPageContainer>
+      <Head>
+        <title>CRWN Clothing | Sign In</title>
+      </Head>
       <SignIn />
       <SignUp />
     </S.SignInPageContainer>

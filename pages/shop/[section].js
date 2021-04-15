@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import CollectionItem from '../../components/CollectionItem';
@@ -9,6 +10,9 @@ const CollectionPage = ({ sectionName }) => {
 
   return (
     <S.CollectionPageContainer>
+      <Head>
+        <title>CRWN Clothing | {title}</title>
+      </Head>
       <S.CollectionTitle>{title}</S.CollectionTitle>
       <S.CollectionItemsContainer>
         {items.map((item) => (
