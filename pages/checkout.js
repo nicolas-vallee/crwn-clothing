@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import CheckoutItem from '../components/CheckoutItem';
+import StripeButton from '../components/StripeButton';
 
 const CheckoutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -33,6 +34,7 @@ const CheckoutPage = () => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <S.CheckoutTotal>TOTAL: ${cartTotal}</S.CheckoutTotal>
+      <StripeButton price={cartTotal} />
     </S.CheckoutPageContainer>
   );
 };
@@ -49,6 +51,10 @@ S.CheckoutPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+
+  button {
+    margin: 50px 0 50px auto;
+  }
 `;
 
 S.CheckoutHeader = styled.div`
