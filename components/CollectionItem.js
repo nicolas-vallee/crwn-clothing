@@ -35,6 +35,7 @@ const S = {};
 
 S.Container = styled.div`
   width: 22vw;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -59,7 +60,7 @@ S.Container = styled.div`
 
 S.BackgroundImage = styled.div`
   width: 100%;
-  height: 95%;
+  height: 320px;
   background-size: cover;
   background-position: center;
   margin-bottom: 5px;
@@ -67,7 +68,7 @@ S.BackgroundImage = styled.div`
 
 S.Footer = styled.div`
   width: 100%;
-  height: 5%;
+  height: 25px;
   display: flex;
   justify-content: space-between;
   font-size: 18px;

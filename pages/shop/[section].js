@@ -82,8 +82,16 @@ S.CollectionTitle = styled.h2`
 
 S.CollectionItemsContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 S.CollectionItem = styled(CollectionItem)`

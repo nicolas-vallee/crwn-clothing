@@ -49,7 +49,7 @@ export default CheckoutPage;
 const S = {};
 
 S.CheckoutPageContainer = styled.div`
-  width: 55%;
+  max-width: 750px;
   min-height: 90vh;
   display: flex;
   flex-direction: column;

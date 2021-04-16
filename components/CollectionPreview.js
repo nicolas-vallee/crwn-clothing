@@ -42,4 +42,5 @@ S.Title = styled.h1`
 S.Preview = styled.div`
   display: flex;
   justify-content: space-between;
+  overflow-x: scroll;
 `;

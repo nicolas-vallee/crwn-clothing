@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { ReactComponent as ShoppingBag } from '../assets/shopping-bag-2.svg';
+import { ReactComponent as ShoppingBag } from '../assets/shopping-bag.svg';
 import { toggleCartHidden } from '../redux/cartSlice';
 
 const CartIcon = () => {
