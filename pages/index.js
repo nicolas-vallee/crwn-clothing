@@ -7,7 +7,6 @@ const HomePage = () => {
     <S.HomePageContainer>
       <Head>
         <title>CRWN Clothing</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
       <Directory />
     </S.HomePageContainer>
